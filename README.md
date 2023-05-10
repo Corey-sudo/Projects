@@ -1,5 +1,4 @@
 # Projects
-Resource Feed
 
 
 Hello!
