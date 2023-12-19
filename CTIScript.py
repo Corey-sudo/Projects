@@ -4,7 +4,7 @@ import time
 from pprint import pprint
 
 def UrlScan():
-    API_KEY = 'e49a6d2a-ec53-48d7-946e-0a0c52dd1a99'
+    API_KEY = $Your_API_Key
 
     IP_To_Search = input("What IP address would you like to search? ")
     headers = {'API-Key': API_KEY, 'Content-Type': 'application/json'}
@@ -61,7 +61,7 @@ def UrlScan():
 
 def CrowdSec():
   IP_To_Search = input("What IP address would you like to search?")
-  headers = {'x-api-key': 'OCFOhQ3GXl3Yj1EOWMDNYzRYNJAQGOeav4iLgxve',}
+  headers = {'x-api-key': $YOUR_API_Key,}
   response = requests.get('https://cti.api.crowdsec.net/v2/smoke/' + IP_To_Search, headers=headers)
   #dump = json.dump(response)
   #File_Text = pprint(response.json())
