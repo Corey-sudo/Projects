@@ -12,6 +12,11 @@ time.sleep(3)
 
 API_KEY = $YOUR_API_KEY
 
+blocked = []
+further_analysis = []
+not_malicious = []
+
+
 def url_scan(ip):
     url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip}"
     headers = {'x-apikey': API_KEY}
@@ -39,6 +44,7 @@ while True:
             if marker >= 5:
                 with open('blocklist.txt', 'a') as blocklist_file:
                     blocklist_file.write(ip_address + '\n')
+                    blocked.append(ip_address)
                     print(f"""
                          
                           {ip_address} added to block list: has been marked malicious by {marker} engines
@@ -48,6 +54,7 @@ while True:
             elif marker < 5 and marker >= 1:
                 with open('futher_analysis.txt', 'a') as blocklist_file:
                     blocklist_file.write(ip_address + '\n')
+                    further_analysis.append(ip_address)
                     print(f"""
                          
                           {ip_address} added to list for further analysis: has been marked malicious by {marker} engines
@@ -55,6 +62,7 @@ while True:
                           """)
             
             else:
+                not_malicious.append(ip_address)
                 print(f"""
                          
                           {ip_address} has been not been marked malicious by any engines
@@ -63,7 +71,10 @@ while True:
                 continue
             time.sleep(15)  # API usage is limited to 4 total calls per minute
             
-    
+    print(len(blocked), "IP addresses have been added to the blocklist")
+    print(len(further_analysis), "IP addresses have been added to the list for further analysis")
+    print(len(not_malicious), "IP addresses have not been marked malicious by any engines")
+
     choice = input("Would you like to scan an additional file? Enter [Y] or [N]  ")
     if choice == "Y":
         print("Looping for next file ")
