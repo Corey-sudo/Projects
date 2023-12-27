@@ -50,6 +50,7 @@ while True:
                           {ip_address} added to block list: has been marked malicious by {marker} engines
                           
                           """)
+                time.sleep(15)
                     
             elif marker < 5 and marker >= 1:
                 with open('futher_analysis.txt', 'a') as blocklist_file:
@@ -60,6 +61,7 @@ while True:
                           {ip_address} added to list for further analysis: has been marked malicious by {marker} engines
                           
                           """)
+                time.sleep(15)
             
             else:
                 not_malicious.append(ip_address)
@@ -68,8 +70,9 @@ while True:
                           {ip_address} has been not been marked malicious by any engines
                           
                           """)
+                time.sleep(15)
+
                 continue
-            time.sleep(15)  # API usage is limited to 4 total calls per minute
             
     print(len(blocked), "IP addresses have been added to the blocklist")
     print(len(further_analysis), "IP addresses have been added to the list for further analysis")
