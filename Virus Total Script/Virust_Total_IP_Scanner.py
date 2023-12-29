@@ -15,7 +15,7 @@ API_KEY = $YOUR_API_KEY
 blocked = []
 further_analysis = []
 not_malicious = []
-
+countries = []
 
 def url_scan(ip):
     url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip}"
@@ -38,10 +38,16 @@ while True:
         for line in f:
             ip_address = line.strip()  # Remove newline characters
             scan_result = url_scan(ip_address)
-            pprint(scan_result)
+             #pprint(scan_result)
             marker = scan_result.get('data', {}).get('attributes', {}).get('last_analysis_stats', {}).get('malicious')
+            country = scan_result.get('data', {}).get('attributes', {}).get('country')
+            countries.append(country)
 
-            if marker >= 5:
+            if marker is None:
+                print(f"No data available for {ip_address}")
+                continue    
+
+            elif marker >= 5:
                 with open('blocklist.txt', 'a') as blocklist_file:
                     blocklist_file.write(ip_address + '\n')
                     blocked.append(ip_address)
@@ -73,10 +79,13 @@ while True:
                 time.sleep(15)
 
                 continue
-            
+
+    countries = set(countries)
+
     print(len(blocked), "IP addresses have been added to the blocklist")
     print(len(further_analysis), "IP addresses have been added to the list for further analysis")
     print(len(not_malicious), "IP addresses have not been marked malicious by any engines")
+    print("The following countries were found in the list: ", (countries))    
 
     choice = input("Would you like to scan an additional file? Enter [Y] or [N]  ")
     if choice == "Y":
