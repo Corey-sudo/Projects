@@ -56,6 +56,8 @@ while True:
         url = f'https://www.virustotal.com/api/v3/files{hash}/votes'
         headers = {'x-apikey': API_KEY, 'Content-Type': 'application/json',}
         data = {'data': {'type': 'vote', 'attributes': {'verdict': Vote,}}}
+        Vote_Result = requests.post(url, headers=headers, json=data)
+        print(Vote_Result.json())
     else:
         continue
 
