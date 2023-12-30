@@ -60,10 +60,6 @@ while True:
         print(Vote_Result.json())
     else:
         continue
-
-    Vote_Result = requests.post(url, headers=headers, json=data)
-    print(Vote_Result.json())
-
     
     choice = input("Would you like to scan an additional file? Enter [Y] or [N]  ")
     if choice == "Y":
