@@ -51,7 +51,7 @@ while True:
 
     file_scan(file_hash)
 
-    Vote = input('If you would like to add a vote, please type either malicious or harmless.  If you would like to skip the vote enter type skip  ')
+    Vote = input('If you would like to add a vote, please type either malicious or harmless.  If you would like to skip the vote enter skip  ')
     if Vote != 'skip':
         url = f'https://www.virustotal.com/api/v3/files{hash}/votes'
         headers = {'x-apikey': API_KEY, 'Content-Type': 'application/json',}
