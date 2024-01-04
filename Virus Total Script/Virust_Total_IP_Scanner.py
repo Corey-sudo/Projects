@@ -91,7 +91,7 @@ while True:
     if choice == "Y":
         print("Looping for next file ")
         time.sleep(3)
-    elif:
+    else:
         break
 
 print("Finished")
