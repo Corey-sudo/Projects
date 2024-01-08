@@ -8,9 +8,11 @@ A sample of IP addresses from Firhol has been provided for you to run through th
 
 ## TPOT Integration and Data
 
-I currently am running a TPOT honeypot on an Azure cloud deployment.  I intend to pull attacker source IPs and upload them here. When pulled from Kibana these files are formatted as a CSV file with some additional characters surrounding the IP addresses.  The last format.py script allows you to convert a TPOT Kibana CSV file into a .txt file formatted correctly for the virust total script.
+I currently am running a TPOT honeypot on an Azure cloud deployment.  I intend to pull attacker source IPs, run them throught the scanner script, then upload both blocklists and further analysis lists here.  New IP addresses will be appended to then end of the lists when updated.
+
+When IPs are pulled from the TPOT Kibana deployment, these files are formatted as a CSV file with some additional characters surrounding the IP addresses.  The format.py script allows you to convert a TPOT Kibana CSV file into a .txt file formatted correctly for the virust total script.
 
 ## Wire Shark Formatting
 
-If you use wireshark for packet capture and network traffic sampling, an additional formatting script has been added.  If using the windows application, fter saving your wireshark capture as a PCAP file click "statistics" then "IPV4", then all addresses.  You can then save this file as a .txt file and run it through the Wire_Shark_Format.py file to correctly format the addresses to be read by the Virus Total Script.
+If you use wireshark for packet capture and network traffic sampling, an additional formatting script has been added.  If using the windows application, after saving your wireshark capture as a PCAP file click "statistics" then "IPV4", then all addresses.  You can then save this file as a .txt file and run it through the Wire_Shark_Format.py file to correctly format the addresses to be read by the Virus Total Script.
 
