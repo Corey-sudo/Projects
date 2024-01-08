@@ -59,7 +59,7 @@ while True:
         Vote_Result = requests.post(url, headers=headers, json=data)
         print(Vote_Result.json())
     else:
-        continue
+        print("Vote has been skipped")
     
     choice = input("Would you like to scan an additional file? Enter [Y] or [N]  ")
     if choice == "Y":
@@ -67,4 +67,4 @@ while True:
         time.sleep(3)
     else:
         print('Goodbye')
-        sys.exit
+        sys.exit()
