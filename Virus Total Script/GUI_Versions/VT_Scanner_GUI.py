@@ -41,10 +41,14 @@ def scan_file(filename, multiline_elem):
                 result_text = f"No data available for {ip_address}\n"
 
             elif marker >= 5:
+                with open('blocklist.txt', 'a') as blocklist_file:
+                    blocklist_file.write(ip_address + '\n')
                 blocked.append(ip_address)
                 result_text = f"{ip_address} added to block list: has been marked malicious by {marker} engines\n"
 
             elif marker < 5 and marker >= 1:
+                with open('further_analysis.txt', 'a') as blocklist_file:
+                    blocklist_file.write(ip_address + '\n')
                 further_analysis.append(ip_address)
                 result_text = f"{ip_address} added to list for further analysis: has been marked malicious by {marker} engines\n"
 
