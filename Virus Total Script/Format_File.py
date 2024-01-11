@@ -13,7 +13,7 @@ def format_file(input_file, output_file):
 
 if __name__ == "__main__":
     input_file_name = input("Enter the input file name: ")
-    output_file_name = input("Enter the output file name: ")
+    output_file_name = input_file_name + "_formatted.txt"
 
     format_file(input_file_name, output_file_name)
 
